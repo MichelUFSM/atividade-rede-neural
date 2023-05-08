@@ -21,20 +21,24 @@ dataset = [[2005, 90, 4000.0], [2000, 80, 3000.0], [2008, 70, 3500.0], [2012, 65
 
 neuralNet = NeuralNetwork(2, [3, 1])
 
-# for i in range(30000):
-#     neuralNet.trainNetwork(dataset, learnRate = 0.0000000001)
+# print(neuralNet.calculateError(dataset))
+# print(neuralNet.classify(2005, 90), " Mhz")
+
+for i in range(10000):
+    neuralNet.trainNetwork(dataset, learnRate = 0.00000000001)
+
 
 # with open("redeNeural.rn", "wb") as saveFile:
 #     pickle.dump(neuralNet, saveFile, pickle.HIGHEST_PROTOCOL)
 
-with open("melhorAteAgora.rn", "rb") as saveFile:
-    neuralNet = pickle.load(saveFile)
+# with open("melhorAteAgora.rn", "rb") as saveFile:
+#     neuralNet = pickle.load(saveFile)
 
-print(neuralNet.calculateError(dataset))
+# print(neuralNet.calculateError(dataset))
 
-# print(neuralNet.layerList[0].perceptronList[0].weightList)
-# print(neuralNet.layerList[0].perceptronList[1].weightList)
-# print(neuralNet.layerList[0].perceptronList[2].weightList)
-# print(neuralNet.layerList[1].perceptronList[0].weightList)
+# print(neuralNet.layerList[0].perceptronList[0].weightList, neuralNet.layerList[0].perceptronList[0].bias)
+# print(neuralNet.layerList[0].perceptronList[1].weightList, neuralNet.layerList[0].perceptronList[1].bias)
+# print(neuralNet.layerList[0].perceptronList[2].weightList, neuralNet.layerList[0].perceptronList[2].bias)
+# print(neuralNet.layerList[1].perceptronList[0].weightList, neuralNet.layerList[1].perceptronList[0].bias)
 
 print(neuralNet.classify(2005, 90), " Mhz")

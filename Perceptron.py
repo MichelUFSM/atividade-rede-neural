@@ -11,7 +11,7 @@ class Perceptron:
         for i in range(len(inputList)):
             weightedInput += inputList[i] * self.weightList[i]
         
-        return activations.reLu(weightedInput) if activated else weightedInput
+        return activations.reLu(weightedInput)
     
     def adjustweights(self, weightList: list[float]):
         self.weightList = weightList

@@ -16,11 +16,8 @@ class NeuralNetwork:
     def classify(self, processorYear: float, processorTDP: float) -> list[float]:
         inputList = [processorYear, processorTDP]
         
-        for index, layer in enumerate(self.layerList):
-            if(index + 1 < len(self.layerList)):
-                inputList = layer.calculateOutputList(inputList, True)
-            else:
-                inputList = layer.calculateOutputList(inputList, True)
+        for layer in self.layerList:
+            inputList = layer.calculateOutputList(inputList, True)
             
         return inputList[0]
     
@@ -32,7 +29,7 @@ class NeuralNetwork:
             result = self.classify(inputList[0], inputList[1])
             expectedResult = inputList[2]
 
-            error += (result - expectedResult) ** 2
+            error += (result - expectedResult) **  2
 
         return error
     
@@ -56,10 +53,12 @@ class NeuralNetwork:
                     perceptron.weightList[i] -= difference * learnRate
                     # print("new Weight: ", perceptron.weightList[i])
 
-                perceptron.bias += adjustmentRate
+                perceptron.bias += adjustmentRate * 100
                 newError = self.calculateError(dataset)
-                perceptron.bias -+ adjustmentRate
+                perceptron.bias -+ adjustmentRate * 100
 
                 difference = (newError - originalError) / adjustmentRate
+
+                perceptron.bias -= difference * learnRate 
     
     
