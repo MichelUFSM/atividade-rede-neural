@@ -6,11 +6,12 @@ class Layer:
     def __init__(self, inputAmount: int, outputAmount: int) -> None:
         self.perceptronList: list[Perceptron] = []
 
+        random.seed(6000)
         for i in range(outputAmount):
-            bias = (random.random()) * 20
+            bias = (random.random() - 0.5) * 200
             weightList: list[float] = []
             for j in range(inputAmount):
-                weightList.append((random.random()) * 0.02)
+                weightList.append((random.random() - 0.5) * 0.02)
             perceptron = Perceptron(weightList, bias)
             self.perceptronList.append(perceptron)
 

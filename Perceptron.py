@@ -2,7 +2,7 @@ import activations as activations
 
 class Perceptron:
 
-    def __init__(self, weightList: list[float], bias:float = 1.0) -> None:
+    def __init__(self, weightList: list[float], bias:float) -> None:
         self.weightList = weightList
         self.bias = bias
 
@@ -11,7 +11,7 @@ class Perceptron:
         for i in range(len(inputList)):
             weightedInput += inputList[i] * self.weightList[i]
         
-        return activations.reLu(weightedInput)
+        return activations.reLu(weightedInput) if activated else weightedInput
     
     def adjustweights(self, weightList: list[float]):
         self.weightList = weightList
